@@ -17,7 +17,7 @@ public abstract class AbstractCell<D extends Direction<D>, S> implements Cell<D,
 			this.neigbours.put(direction, neighbour);
 			D revDir = direction.reverseDirection();
 			if (neighbour.getNeighbour(revDir) == null || neighbour.getNeighbour(revDir) != this) {
-				neighbour.setNeighbour(direction.reverseDirection(), this);
+				neighbour.setNeighbour(revDir, this);
 			}
 		}
 	}
