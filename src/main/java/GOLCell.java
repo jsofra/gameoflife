@@ -14,12 +14,16 @@ public class GOLCell extends AbstractCell<MooreNeighbourhood, Boolean> {
 			if (cell.getState()) liveCellCount++;
 		}
 		
-		if(liveCellCount < 2 || liveCellCount > 3){
-			this.nextState = false;
-		}else if(liveCellCount == 3){
-			this.nextState = true;
-		}else{
-			this.nextState = this.state;
+		if (this.state) {
+			// underpopulated or overcrowded
+			if(liveCellCount < 2 || liveCellCount > 3) {
+				this.nextState = false;
+			} else {
+				this.nextState = this.state;
+			}
+		} else {
+			// reproduce
+			if(liveCellCount == 3) this.nextState = true;
 		}
 	}
 	
